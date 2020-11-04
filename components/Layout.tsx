@@ -1,11 +1,15 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Search from '../components/Search'
+import { useState } from 'react';
+import Search from '../components/Search';
+import SearchIcon from '../icons/SearchIcon';
 
 const name = 'Notes';
 export const siteTitle = 'Next.js Notes';
 
 export default function Layout({ children, home }: any) {
+  const [openSearch, setOpenSearch] = useState(false);
+
   return (
     <div>
       <Head>
@@ -19,19 +23,26 @@ export default function Layout({ children, home }: any) {
             <a>{name}</a>
           </Link>
         </h1>
+        <button
+          className="search-button"
+          onClick={() => setOpenSearch(!openSearch)}
+        >
+          <SearchIcon />
+        </button>
       </header>
-      <section>
-        <h2>Search</h2>
-        <Search />
+      <section className="search">
+        {openSearch && <Search />}
       </section>
-      <main>{children}</main>
-      {!home && (
-        <div>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
+      <main>
+        <div>{children}</div>
+        {!home && (
+          <div>
+            <Link href="/">
+              <a>← Back to home</a>
+            </Link>
+          </div>
+        )}
+      </main>
     </div>
   );
 }
