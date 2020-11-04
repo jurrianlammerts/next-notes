@@ -1,35 +1,29 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import Link from 'next/link';
+import Search from '../components/Search'
 
-const name = 'Notes'
-export const siteTitle = 'Next.js Notes'
+const name = 'Notes';
+export const siteTitle = 'Next.js Notes';
 
 export default function Layout({ children, home }: any) {
   return (
     <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Create the most beautifull notes"
-        />
+        <meta name="description" content="Create the most beautifull notes" />
         <meta name="og:title" content={siteTitle} />
       </Head>
       <header>
-        {home ? (
-          <>
-            <h1>{name}</h1>
-          </>
-        ) : (
-          <>
-            <h2>
-              <Link href="/">
-                <a>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+        <h1>
+          <Link href="/">
+            <a>{name}</a>
+          </Link>
+        </h1>
       </header>
+      <section>
+        <h2>Search</h2>
+        <Search />
+      </section>
       <main>{children}</main>
       {!home && (
         <div>
@@ -39,5 +33,5 @@ export default function Layout({ children, home }: any) {
         </div>
       )}
     </div>
-  )
+  );
 }
