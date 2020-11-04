@@ -4811,6 +4811,11 @@ react-is@16.13.1, react-is@^16.13.1, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-lorem-ipsum@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/react-lorem-ipsum/-/react-lorem-ipsum-1.4.7.tgz#9fdbd061f8b4b75acc9b3af4c1101f1389471a94"
+  integrity sha512-rmzsK9IIlrraXu5fjy9AScbSgo7d4zsbZ5EamRHNkbauTa/WfbhjwxXP1dsuoOT6AVbvxoTQzxZNqdYRWoG3Mw==
+
 react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"

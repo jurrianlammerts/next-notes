@@ -65,7 +65,10 @@ input[type='reset'] {
   padding: 0;
   font: inherit;
   cursor: pointer;
-  outline: inherit;
+}
+
+time {
+  color: #fff
 }
 
 #root {
@@ -80,6 +83,7 @@ input[type='reset'] {
 
 .search {
   position: absolute;
+  z-index: 2;
   width: 100%;
   max-width: 600px;
   top: 50%;
@@ -103,8 +107,8 @@ input[type='reset'] {
   width: 48px;
   height: 48px;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 12px;
+  top: -4px;
 }
 
 .search-button svg {
@@ -209,14 +213,13 @@ input[type='reset'] {
 .overlay {
   z-index: 1;
   position: fixed;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   will-change: opacity;
-  top: 0;
+  top: 64px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 990px;
 }
 
 .overlay a {
@@ -226,7 +229,6 @@ input[type='reset'] {
   bottom: 0;
   width: 100vw;
   left: 50%;
-
   transform: translateX(-50%);
 }
 
@@ -259,6 +261,7 @@ input[type='reset'] {
 
 .results {
   list-style: none;
+  z-index: 3;
   padding: 0;
   margin: 0;
   max-width: 600px;

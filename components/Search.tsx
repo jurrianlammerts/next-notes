@@ -1,11 +1,25 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Downshift from 'downshift';
 
-export default function Search() {
+const useFocus = () => {
+  const htmlElRef = useRef<any>(null);
+  const setFocus: any = () => {
+    htmlElRef.current && htmlElRef.current.focus();
+  };
+
+  return [htmlElRef, setFocus];
+};
+
+export default function Search(props: any) {
   const [query, setQuery] = useState('');
+  const [inputRef, setInputFocus] = useFocus();
   const [results, setResults] = useState([]);
   const router = useRouter();
+
+  useEffect(() => {
+    if (props.open) setInputFocus();
+  }, [props.open]);
 
   const searchEndpoint = (query: string) => `/api/search?q=${query}`;
 
@@ -24,6 +38,7 @@ export default function Search() {
 
   const onSelect = (item: any) => {
     router.push(`/posts/${item.id}`);
+    props.setOpen(false)
   };
 
   return (
@@ -43,7 +58,7 @@ export default function Search() {
         isOpen,
       }) => (
         <div>
-          <input {...getInputProps()} id="spotlight" />
+          <input {...getInputProps()} id="spotlight" ref={inputRef} />
           <ul {...getMenuProps()} className="results">
             {isOpen &&
               results

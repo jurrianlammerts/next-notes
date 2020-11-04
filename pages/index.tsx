@@ -1,6 +1,5 @@
-import Head from 'next/head'
-import Layout , { siteTitle } from '../components/Layout'
-
+import Head from 'next/head';
+import Layout, { siteTitle } from '../components/Layout';
 
 export default function Home() {
   return (
@@ -9,5 +8,5 @@ export default function Home() {
         <title>{siteTitle}</title>
       </Head>
     </Layout>
-  )
+  );
 }
