@@ -1,6 +1,9 @@
 
 import { useCallback, useRef, useState } from 'react'
 import Link from 'next/link'
+import Downshift from 'downshift'
+
+import {menuStyles, comboboxStyles} from '../shared'
 
 export default function Search() {
 
@@ -37,28 +40,89 @@ export default function Search() {
     }
   }, [])
 
+  const items = [
+  {value: 'apple'},
+  {value: 'pear'},
+  {value: 'orange'},
+  {value: 'grape'},
+  {value: 'banana'},
+]
+
+
   return (
-    <div
-      ref={searchRef}
-    >
-      <input
-        onChange={onChange}
-        onFocus={onFocus}
-        placeholder='Search posts'
-        type='text'
-        value={query}
-      />
-      { active && results.length > 0 && (
-        <ul>
-          {results.map(({ id, title }) => (
-            <li key={id}>
-              <Link href="/posts/[id]" as={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-            </li>
-          ))}
+    <Downshift
+    onChange={(selection) =>
+      alert(selection ? `You selected ${selection.value}` : 'Selection Cleared')
+    }
+    itemToString={(item) => (item ? item.value : '')}
+  >
+    {({
+      getInputProps,
+      getItemProps,
+      getMenuProps,
+      getLabelProps,
+      getToggleButtonProps,
+      inputValue,
+      highlightedIndex,
+      selectedItem,
+      isOpen,
+    }) => (
+      <div style={comboboxStyles}>
+        <label {...getLabelProps()}>Enter a fruit:</label>
+        <input {...getInputProps()} />
+        <button {...getToggleButtonProps()} aria-label={'toggle menu'}>
+          &#8595;
+        </button>
+        <ul {...getMenuProps()} style={menuStyles}>
+          {isOpen &&
+            items
+              .filter((item) => !inputValue || item.value.includes(inputValue))
+              .map((item, index) => (
+                <li
+                  {...getItemProps({
+                    key: `${item.value}${index}`,
+                    item,
+                    index,
+                    style: {
+                      backgroundColor:
+                        highlightedIndex === index ? 'lightgray' : 'white',
+                      fontWeight: selectedItem === item ? 'bold' : 'normal',
+                    },
+                  })}
+                >
+                  {item.value}
+                </li>
+              ))}
         </ul>
-      ) }
-    </div>
+      </div>
+    )}
+  </Downshift>
   )
 }
+
+//   return (
+//     <div
+//       ref={searchRef}
+//     >
+//       <input
+//         onChange={onChange}
+//         onFocus={onFocus}
+//         placeholder='Search posts'
+//         type='text'
+//         value={query}
+//       />
+//       { active && results.length > 0 && (
+//         <ul>
+//           {results.map(({ id, title }) => (
+//             <li key={id}>
+//               <Link href="/posts/[id]" as={`/posts/${id}`}>
+//                 <a>{title}</a>
+//               </Link>
+//             </li>
+//           ))}
+//         </ul>
+//       ) }
+//     </div>
+//   )
+// }
+
