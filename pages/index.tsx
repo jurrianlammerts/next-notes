@@ -1,15 +1,18 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Head from 'next/head'
+// import Link from 'next/link'
+import Layout , { siteTitle } from '../components/Layout'
+import Search from '../components/Search'
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
-
-export default IndexPage
+export default function Home() {
+  return (
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+      <section>
+        <h2>Search</h2>
+        <Search />
+      </section>
+    </Layout>
+  )
+}
