@@ -1,15 +1,24 @@
 import Head from 'next/head';
-import Layout from '../../components/Layout';
+import Image from 'next/image';
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import Layout from '../../components/Layout';
 import Date from '../../components/Date';
 
 export default function Post({ postData }: any) {
+  console.log(postData);
   return (
     <Layout>
       <Head>
-        <title>{postData.title}</title>
+        <title>Notes - {postData.title}</title>
       </Head>
       <article>
+        <Image
+          src={`/images/${postData.id}.jpg`}
+          alt="Picture of the author"
+          height={500}
+          width={1000}
+          layout="responsive"
+        />
         <h1>{postData.title}</h1>
         <div>
           <Date dateString={postData.date} />

@@ -2,9 +2,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Search from '../components/Search';
-import SearchIcon from '../icons/SearchIcon';
+import Header from '../components/Header';
 
-const name = 'Notes';
+// import SearchIcon from '../icons/SearchIcon';
+
 export const siteTitle = 'Next.js Notes';
 
 export default function Layout({ children, home }: any) {
@@ -14,6 +15,9 @@ export default function Layout({ children, home }: any) {
   const escapeListener = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       setOpenSearch(false);
+    }
+    if (e.key === 'Space') {
+      setOpenSearch(true);
     }
   }, []);
 
@@ -33,27 +37,21 @@ export default function Layout({ children, home }: any) {
         <meta name="description" content="Create the most beautifull notes" />
         <meta name="og:title" content={siteTitle} />
       </Head>
-      <header>
-        <h1>
-          <Link href="/">
-            <a>{name}</a>
-          </Link>
-        </h1>
-        <button
-          className="search-button"
-          onClick={() => setOpenSearch(!openSearch)}
-        >
-          <SearchIcon />
-        </button>
-      </header>
+      <Header />
+      {/* <button
+        className="search-button"
+        onClick={() => setOpenSearch(!openSearch)}
+      >
+        <SearchIcon />
+      </button> */}
       {openSearch && (
-        <section className="overlay" ref={ref}>
+        <div className="overlay" ref={ref}>
           <div className="search">
-            <Search open={openSearch} setOpen={setOpenSearch}/>
+            <Search open={openSearch} setOpen={setOpenSearch} />
           </div>
-        </section>
+        </div>
       )}
-      <main>
+      <main className="container">
         <div>{children}</div>
         {!home && (
           <div>
