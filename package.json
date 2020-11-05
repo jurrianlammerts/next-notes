@@ -8,6 +8,7 @@
     "cache-posts": "node scripts/cache.js"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^7.9.1",
     "@popmotion/popcorn": "^0.4.4",
     "@types/nprogress": "^0.2.0",
     "date-fns": "^2.16.1",

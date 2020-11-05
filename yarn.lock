@@ -1076,6 +1076,17 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@elastic/elasticsearch@^7.9.1":
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/@elastic/elasticsearch/-/elasticsearch-7.9.1.tgz#40f1c38e8f70d783851c13be78a7cb346891c15e"
+  integrity sha512-NfPADbm9tRK/4ohpm9+aBtJ8WPKQqQaReyBKT225pi2oKQO1IzRlfM+OPplAvbhoH1efrSj1NKk27L+4BCrzXQ==
+  dependencies:
+    debug "^4.1.1"
+    decompress-response "^4.2.0"
+    ms "^2.1.1"
+    pump "^3.0.0"
+    secure-json-parse "^2.1.0"
+
 "@emotion/is-prop-valid@^0.8.2":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
@@ -2833,7 +2844,7 @@ date-fns@^2.16.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
 
-debug@4, debug@^4.0.0, debug@^4.1.0:
+debug@4, debug@^4.0.0, debug@^4.1.0, debug@^4.1.1:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.2.0.tgz#7f150f93920e94c58f5574c2fd01a3110effe7f1"
   integrity sha512-IX2ncY78vDTjZMFUdmsvIRFY2Cf4FnD0wRs+nQwJU8Lu99/tPFdb0VybiiMTPe3I6rQmwsqQqRBvxU+bZ/I8sg==
@@ -5391,7 +5402,7 @@ ms@2.0.0:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
-ms@2.1.2:
+ms@2.1.2, ms@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
@@ -6914,6 +6925,11 @@ section-matter@^1.0.0:
   dependencies:
     extend-shallow "^2.0.1"
     kind-of "^6.0.0"
+
+secure-json-parse@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/secure-json-parse/-/secure-json-parse-2.1.0.tgz#ae76f5624256b5c497af887090a5d9e156c9fb20"
+  integrity sha512-GckO+MS/wT4UogDyoI/H/S1L0MCcKS1XX/vp48wfmU7Nw4woBmb8mIpu4zPBQjKlRT88/bt9xdoV4111jPpNJA==
 
 seek-bzip@^1.0.5:
   version "1.0.6"

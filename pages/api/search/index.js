@@ -1,4 +1,6 @@
-import FuzzySearch from 'fuzzy-search';
+const { Client } = require('@elastic/elasticsearch');
+const client = new Client({ node: 'http://localhost:3000/posts/search?' });
+
 import { getSortedPostsData } from '../../../lib/posts';
 
 const posts =
@@ -6,13 +8,18 @@ const posts =
     ? require('../../../cache/data').posts
     : getSortedPostsData();
 
-export default (req, res) => {
-  const searcher = new FuzzySearch(posts, ['title', 'category', 'slug'], {
-    caseSensitive: false,
-  });
-  const results = searcher.search(req.query.q);
+export default async (req, res) => {
+  try {
+    const response = await client.search({
+      q: 'pants',
+    });
+    console.log(response.hits.hits);
+    console.log(response);
 
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify({ results }));
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ response }));
+  } catch (error) {
+    console.trace(error.message);
+  }
 };

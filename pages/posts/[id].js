@@ -36,7 +36,6 @@ export default function Post({ postData }) {
                 alt="Picture of the author"
                 style={{
                   width: '100%',
-                  height: 500,
                   top: 0,
                   left: 0,
                   position: 'absolute',
@@ -50,7 +49,6 @@ export default function Post({ postData }) {
                 alt="Picture of the author"
                 style={{
                   width: '100%',
-                  height: 500,
                   top: 0,
                   left: 0,
                   position: 'absolute',
