@@ -14,51 +14,53 @@ export default function Post({ postData }) {
         <title>Notes - {postData.title}</title>
       </Head>
       <article>
-        <picture
+        <div
           style={{
             position: 'relative',
-            paddingBottom: '56.25%', 
+            paddingBottom: '56.25%',
             overflow: 'hidden',
           }}
         >
-          <source
-            srcSet={require(`../../public/images/${postData.slug}.jpg?webp`)}
-            type="image/webp"
-          />
-          <source
-            srcSet={require(`../../public/images/${postData.slug}.jpg`)}
-            type="image/jpeg"
-          />
-          {!loaded ? (
-            <img
-              key={postData.id}
-              src={require(`../../public/images/${postData.slug}.jpg?lqip`)}
-              alt="Picture of the author"
-              style={{
-                width: '100%',
-                height: 500,
-                top: 0,
-                left: 0,
-                position: 'absolute',
-              }}
-              onLoad={setLoaded(true)}
+          <picture>
+            <source
+              srcSet={require(`../../public/images/${postData.slug}.jpg?webp`)}
+              type="image/webp"
             />
-          ) : (
-            <img
-              key={postData.id}
-              src={require(`../../public/images/${postData.slug}.jpg`)}
-              alt="Picture of the author"
-              style={{
-                width: '100%',
-                height: 500,
-                top: 0,
-                left: 0,
-                position: 'absolute',
-                objectFit: 'cover',
-              }}
+            <source
+              srcSet={require(`../../public/images/${postData.slug}.jpg`)}
+              type="image/jpeg"
             />
-          )}
-        </picture>
+            {!loaded ? (
+              <img
+                key={postData.id}
+                src={require(`../../public/images/${postData.slug}.jpg?lqip`)}
+                alt="Picture of the author"
+                style={{
+                  width: '100%',
+                  height: 500,
+                  top: 0,
+                  left: 0,
+                  position: 'absolute',
+                }}
+                onLoad={setLoaded(true)}
+              />
+            ) : (
+              <img
+                key={postData.id}
+                src={require(`../../public/images/${postData.slug}.jpg`)}
+                alt="Picture of the author"
+                style={{
+                  width: '100%',
+                  height: 500,
+                  top: 0,
+                  left: 0,
+                  position: 'absolute',
+                  objectFit: 'cover',
+                }}
+              />
+            )}
+          </picture>
+        </div>
         <h1>{postData.title}</h1>
         <div>
           <Date dateString={postData.date} />
