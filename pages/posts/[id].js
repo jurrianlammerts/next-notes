@@ -14,14 +14,23 @@ export default function Post({ postData }) {
         <title>Notes - {postData.title}</title>
       </Head>
       <article>
-        <div
-          className="img-container"
+        <picture
           style={{
             position: 'relative',
             paddingBottom: '56.25%',
             overflow: 'hidden',
           }}
         >
+          <source
+            srcSet={require(`../../public/images/${postData.slug}.jpg?webp`)}
+            type="image/webp"
+          />
+          <source
+            srcSet={require(`../../public/images/${postData.slug}.jpg`)}
+            type="image/jpeg"
+          />
+          <img src={require('./images/my-image.jpg')} />
+
           {!loaded ? (
             <img
               key={postData.id}
@@ -51,7 +60,7 @@ export default function Post({ postData }) {
               }}
             />
           )}
-        </div>
+        </picture>
         <h1>{postData.title}</h1>
         <div>
           <Date dateString={postData.date} />
