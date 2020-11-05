@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
           type="text/css"
           href="/nprogress.css"
           as="style"
-          onload="this.onload=null;this.rel='stylesheet'"
+          onLoad="this.onload=null;this.rel='stylesheet'"
         />
       </Head>
       <Component {...pageProps} />

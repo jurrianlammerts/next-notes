@@ -1,10 +1,9 @@
-const withOptimizedImages = require('next-optimized-images');
-
-module.exports = withOptimizedImages({
-  /* config for next-optimized-images */
-  imagesFolder: 'images',
-  handleImages: ['jpeg', 'png', 'svg', 'webp'],
-  removeOriginalExtension: false,
-  optimizeImages: true,
-  optimizeImagesInDev: true,
-});
+module.exports = {
+  images: {
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    domains: [],
+    path: '/_next/image',
+    loader: 'default',
+  },
+};

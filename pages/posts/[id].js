@@ -13,9 +13,9 @@ export default function Post({ postData }) {
         <title>Notes - {postData.title}</title>
       </Head>
       <article>
-        <img
+        <Image
           key={postData.id}
-          src={`/images/${postData.slug}.jpg?lqip-colors`}
+          src={`/images/${postData.slug}.jpg`}
           alt="Picture of the author"
           height={450}
           width={800}
