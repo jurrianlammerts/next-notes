@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as React from 'react';
 import { Avatar } from 'react-lorem-ipsum';
 import DateComp from './Date';
@@ -8,7 +9,9 @@ export default function Header() {
   return (
     <header>
       <DateComp dateString={isoDate} />
-      <h1>Today</h1>
+      <h1>
+        <Link href="/">Today</Link>
+      </h1>
 
       <Avatar className="avatar" />
     </header>

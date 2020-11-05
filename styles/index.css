@@ -239,11 +239,12 @@ time {
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
   will-change: opacity;
-  top: 64px;
+  top: 0;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
+  cursor: pointer;
 }
 
 .overlay a {

@@ -26,8 +26,7 @@
     "react-lorem-ipsum": "^1.4.7",
     "react-router-dom": "^5.2.0",
     "remark": "^13.0.0",
-    "remark-html": "^13.0.1",
-    "starwars-names": "^1.6.0"
+    "remark-html": "^13.0.1"
   },
   "license": "MIT"
 }
