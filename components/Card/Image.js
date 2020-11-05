@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { motion, useInvertedScale } from 'framer-motion';
 import { closeSpring } from './animations';
 
@@ -8,6 +8,7 @@ export const Image = ({
   pointOfInterest = 0,
   backgroundColor,
 }) => {
+  const [loaded, setLoaded] = useState(false);
   const inverted = useInvertedScale();
 
   return (
@@ -15,17 +16,27 @@ export const Image = ({
       className="card-image-container"
       style={{ ...inverted, backgroundColor, originX: 0, originY: 0 }}
     >
-      <motion.img
-        className="card-image"
-        src={`images/${slug}.jpg`}
-        whileHover={{ scale: 1.1 }}
-        alt=""
-        initial={false}
-        animate={
-          isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
-        }
-        transition={closeSpring}
-      />
+      {!loaded ? (
+        <motion.img
+          className="card-image"
+          src={require(`../../public/images/${slug}.jpg?lqip`)}
+          alt="Picture of the author"
+          whileHover={{ scale: 1.1 }}
+          onLoad={setLoaded(true)}
+        />
+      ) : (
+        <motion.img
+          className="card-image"
+          src={require(`../../public/images/${slug}.jpg`)}
+          whileHover={{ scale: 1.1 }}
+          alt="Picture of the author"
+          initial={false}
+          animate={
+            isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
+          }
+          transition={closeSpring}
+        />
+      )}
     </motion.div>
   );
 };

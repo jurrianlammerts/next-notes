@@ -8,7 +8,7 @@ const posts =
 
 export default (req, res) => {
   const searcher = new FuzzySearch(posts, ['title', 'category', 'slug'], {
-    caseSensitive: true,
+    caseSensitive: false,
   });
   const results = searcher.search(req.query.q);
 
