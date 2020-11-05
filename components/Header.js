@@ -16,6 +16,7 @@ const Header = forwardRef((props, ref) => {
 
       <button
         ref={ref}
+        aria-label='Search Button'
         className="search-button"
         onClick={() => setOpenSearch(true)}
       >
