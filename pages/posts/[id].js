@@ -7,20 +7,30 @@ import Layout from '../../components/Layout';
 import Date from '../../components/Date';
 
 export default function Post({ postData }) {
+  const [loaded, setLoaded] = useState(false);
   return (
     <Layout>
       <Head>
         <title>Notes - {postData.title}</title>
       </Head>
       <article>
-        <Image
-          key={postData.id}
-          src={`/images/${postData.slug}.jpg`}
-          alt="Picture of the author"
-          height={450}
-          width={800}
-          layout="responsive"
-        />
+        {!loaded ? (
+          <img
+            key={postData.id}
+            src={require(`../../public/images/${postData.slug}.jpg?lqip`)}
+            alt="Picture of the author"
+            style={{ width: '100%', maxWidth: 900 }}
+            onLoad={setLoaded(true)}
+          />
+        ) : (
+          <img
+            key={postData.id}
+            src={require(`../../public/images/${postData.slug}.jpg`)}
+            alt="Picture of the author"
+            style={{ width: '100%', maxWidth: 900 }}
+          />
+        )}
+
         <h1>{postData.title}</h1>
         <div>
           <Date dateString={postData.date} />
