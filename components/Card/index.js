@@ -71,7 +71,7 @@ export const Card = memo(
               onUpdate={checkZIndex}
             >
               <Image
-                id={id}
+                slug={slug}
                 isSelected={isSelected}
                 pointOfInterest={pointOfInterest}
                 backgroundColor={backgroundColor}

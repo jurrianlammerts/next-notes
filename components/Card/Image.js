@@ -3,7 +3,7 @@ import { motion, useInvertedScale } from 'framer-motion';
 import { closeSpring } from './animations';
 
 export const Image = ({
-  id,
+  slug,
   isSelected,
   pointOfInterest = 0,
   backgroundColor,
@@ -17,7 +17,7 @@ export const Image = ({
     >
       <motion.img
         className="card-image"
-        src={`images/${id}.jpg`}
+        src={`images/${slug}.jpg`}
         whileHover={{ scale: 1.1 }}
         alt=""
         initial={false}

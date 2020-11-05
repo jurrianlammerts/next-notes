@@ -15,7 +15,7 @@ export default function Post({ postData }) {
       <article>
         <Image
           key={postData.id}
-          src={`/images/${postData.id}.jpg`}
+          src={`/images/${postData.slug}.jpg`}
           alt="Picture of the author"
           height={500}
           width={1000}
