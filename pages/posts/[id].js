@@ -14,23 +14,44 @@ export default function Post({ postData }) {
         <title>Notes - {postData.title}</title>
       </Head>
       <article>
-        {!loaded ? (
-          <img
-            key={postData.id}
-            src={require(`../../public/images/${postData.slug}.jpg?lqip`)}
-            alt="Picture of the author"
-            style={{ width: '100%', maxWidth: 900 }}
-            onLoad={setLoaded(true)}
-          />
-        ) : (
-          <img
-            key={postData.id}
-            src={require(`../../public/images/${postData.slug}.jpg`)}
-            alt="Picture of the author"
-            style={{ width: '100%', maxWidth: 900 }}
-          />
-        )}
-
+        <div
+          className="img-container"
+          style={{
+            position: 'relative',
+            paddingBottom: '56.25%',
+            overflow: 'hidden',
+          }}
+        >
+          {!loaded ? (
+            <img
+              key={postData.id}
+              src={require(`../../public/images/${postData.slug}.jpg?lqip`)}
+              alt="Picture of the author"
+              style={{
+                width: '100%',
+                height: 500,
+                top: 0,
+                left: 0,
+                position: 'absolute',
+              }}
+              onLoad={setLoaded(true)}
+            />
+          ) : (
+            <img
+              key={postData.id}
+              src={require(`../../public/images/${postData.slug}.jpg`)}
+              alt="Picture of the author"
+              style={{
+                width: '100%',
+                height: 500,
+                top: 0,
+                left: 0,
+                position: 'absolute',
+                objectFit: 'cover',
+              }}
+            />
+          )}
+        </div>
         <h1>{postData.title}</h1>
         <div>
           <Date dateString={postData.date} />
