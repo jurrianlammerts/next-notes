@@ -236,7 +236,7 @@ time {
 .overlay {
   z-index: 1;
   position: fixed;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.75);
   will-change: opacity;
   top: 0;
   bottom: 0;

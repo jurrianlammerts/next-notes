@@ -16,27 +16,37 @@ export const Image = ({
       className="card-image-container"
       style={{ ...inverted, backgroundColor, originX: 0, originY: 0 }}
     >
-      {!loaded ? (
-        <motion.img
-          className="card-image"
-          src={require(`../../public/images/${slug}.jpg?lqip`)}
-          alt="Picture of the author"
-          whileHover={{ scale: 1.1 }}
-          onLoad={setLoaded(true)}
+      <picture>
+        <source
+          srcSet={require(`../../public/images/${slug}.jpg?webp`)}
+          type="image/webp"
         />
-      ) : (
-        <motion.img
-          className="card-image"
-          src={require(`../../public/images/${slug}.jpg`)}
-          whileHover={{ scale: 1.1 }}
-          alt="Picture of the author"
-          initial={false}
-          animate={
-            isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
-          }
-          transition={closeSpring}
+        <source
+          srcSet={require(`../../public/images/${slug}.jpg`)}
+          type="image/jpeg"
         />
-      )}
+        {!loaded ? (
+          <motion.img
+            className="card-image"
+            src={require(`../../public/images/${slug}.jpg?lqip`)}
+            alt="Picture of the author"
+            whileHover={{ scale: 1.1 }}
+            onLoad={setLoaded(true)}
+          />
+        ) : (
+          <motion.img
+            className="card-image"
+            src={require(`../../public/images/${slug}.jpg`)}
+            whileHover={{ scale: 1.1 }}
+            alt="Picture of the author"
+            initial={false}
+            animate={
+              isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
+            }
+            transition={closeSpring}
+          />
+        )}
+      </picture>
     </motion.div>
   );
 };
