@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { forwardRef } from 'react';
-import { Avatar } from 'react-lorem-ipsum';
+import SearchIcon from '../icons/SearchIcon';
 import DateComp from './Date';
 
 const Header = forwardRef((props, ref) => {
@@ -19,7 +19,7 @@ const Header = forwardRef((props, ref) => {
         className="search-button"
         onClick={() => setOpenSearch(true)}
       >
-        <Avatar className="avatar" />
+        <SearchIcon />
       </button>
     </header>
   );
