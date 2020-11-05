@@ -36,5 +36,6 @@
     "hooks": {
       "pre-commit": "yarn cache-posts && git add cache/data.js"
     }
-  }
+  },
+  "license": "ISC"
 }
