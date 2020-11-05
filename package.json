@@ -5,7 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "cache-posts": "node scripts/cache.js"
   },
   "dependencies": {
     "@popmotion/popcorn": "^0.4.4",
@@ -15,7 +15,6 @@
     "framer-motion": "^2.9.4",
     "fuzzy-search": "^3.2.1",
     "gray-matter": "^4.0.2",
-    "lodash": "^4.17.20",
     "next": "latest",
     "nprogress": "^0.2.0",
     "popmotion": "^9.0.0",
@@ -26,5 +25,12 @@
     "remark": "^13.0.0",
     "remark-html": "^13.0.1"
   },
-  "license": "MIT"
+  "devDependencies": {
+    "husky": "^4.2.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn cache-posts && git add cache/data.js"
+    }
+  }
 }
