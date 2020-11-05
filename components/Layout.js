@@ -17,9 +17,6 @@ export default function Layout({ children, home }) {
     if (e.key === 'Escape') {
       setOpenSearch(false);
     }
-    if (e.key === 'Alt') {
-      setOpenSearch(true);
-    }
   }, []);
 
   const onClick = useCallback((event) => {

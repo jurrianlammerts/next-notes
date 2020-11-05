@@ -12,7 +12,13 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+        <link
+          rel="preload"
+          type="text/css"
+          href="/nprogress.css"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'"
+        />
       </Head>
       <Component {...pageProps} />
     </>

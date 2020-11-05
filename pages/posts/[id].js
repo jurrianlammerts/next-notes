@@ -13,12 +13,12 @@ export default function Post({ postData }) {
         <title>Notes - {postData.title}</title>
       </Head>
       <article>
-        <Image
+        <img
           key={postData.id}
-          src={`/images/${postData.slug}.jpg`}
+          src={`/images/${postData.slug}.jpg?lqip-colors`}
           alt="Picture of the author"
-          height={500}
-          width={1000}
+          height={450}
+          width={800}
           layout="responsive"
         />
         <h1>{postData.title}</h1>
