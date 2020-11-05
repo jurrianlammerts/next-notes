@@ -29,8 +29,6 @@ export default function Post({ postData }) {
             srcSet={require(`../../public/images/${postData.slug}.jpg`)}
             type="image/jpeg"
           />
-          <img src={require('./images/my-image.jpg')} />
-
           {!loaded ? (
             <img
               key={postData.id}
