@@ -17,7 +17,7 @@ export default function Post({ postData }) {
         <picture
           style={{
             position: 'relative',
-            paddingBottom: '56.25%',
+            paddingBottom: '56.25%', 
             overflow: 'hidden',
           }}
         >
