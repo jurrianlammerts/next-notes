@@ -1,7 +1,7 @@
 ---
-id: 'chrismas'
+id: 'christmas'
 date: "2020-01-02"
-slug: 'chrismas'
+slug: 'christmas'
 category: 'Holidays'
 title: 'Seriously the Only Escape is the Stratosphere'
 pointOfInterest: 260
