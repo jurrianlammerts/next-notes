@@ -1,5 +1,5 @@
 ---
-id: 'h'
+id: 'cupcakes'
 date: "2020-01-02"
 slug: 'cupcakes'
 category: "They're all the same"

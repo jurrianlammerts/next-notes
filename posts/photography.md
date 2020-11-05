@@ -1,5 +1,5 @@
 ---
-id: 'd'
+id: 'photography'
 date: "2020-01-02"
 slug: 'photography'
 category: 'Photography'

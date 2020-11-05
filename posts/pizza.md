@@ -1,5 +1,5 @@
 ---
-id: 'c'
+id: 'pizza'
 date: '2020-01-02'
 slug: 'pizza'
 category: 'Pizza'

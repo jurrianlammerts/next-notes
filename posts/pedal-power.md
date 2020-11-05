@@ -1,5 +1,5 @@
 ---
-id: 'a'
+id: 'pedal-power'
 date: "2020-01-02"
 slug: 'pedal-power'
 category: 'Pedal Power'

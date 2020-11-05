@@ -37,7 +37,7 @@ export default function Search({ open, setOpen }) {
   };
 
   const onSelect = (item) => {
-    router.push(`/posts/${item.slug}`);
+    router.push(`/posts/${item.id}`);
     setOpen(false);
   };
 
