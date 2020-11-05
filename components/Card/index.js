@@ -16,7 +16,7 @@ import { useWheelScroll } from '../../utils/useWheelScroll';
 const dismissDistance = 150;
 
 export const Card = memo(
-  ({ id, slug, title, category, pointOfInterest, backgroundColor }: any) => {
+  ({ id, slug, title, category, pointOfInterest, backgroundColor }) => {
     const router = useRouter();
 
     const isSelected = router.pathname === id;

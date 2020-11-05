@@ -1,18 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Search from '../components/Search';
-import Header from '../components/Header';
+import Search from './Search';
+import Header from './Header';
 
 // import SearchIcon from '../icons/SearchIcon';
 
 export const siteTitle = 'Next.js Notes';
 
-export default function Layout({ children, home }: any) {
-  const ref = useRef<any>(null);
+export default function Layout({ children, home }) {
+  const ref = useRef(null);
 
   const [openSearch, setOpenSearch] = useState(false);
-  const escapeListener = useCallback((e: KeyboardEvent) => {
+  const escapeListener = useCallback((e) => {
     if (e.key === 'Escape') {
       setOpenSearch(false);
     }

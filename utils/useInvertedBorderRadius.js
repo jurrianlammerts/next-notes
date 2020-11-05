@@ -14,7 +14,7 @@ import { useEffect } from 'react';
  *
  * @param radius
  */
-export function useInvertedBorderRadius(radius: number) {
+export function useInvertedBorderRadius(radius) {
   const scaleX = useMotionValue(1);
   const scaleY = useMotionValue(1);
   const inverted = useInvertedScale({ scaleX, scaleY });

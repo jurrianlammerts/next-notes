@@ -3,15 +3,15 @@ import { useRouter } from 'next/router';
 import Downshift from 'downshift';
 
 const useFocus = () => {
-  const htmlElRef = useRef<any>(null);
-  const setFocus: any = () => {
+  const htmlElRef = useRef(null);
+  const setFocus = () => {
     htmlElRef.current && htmlElRef.current.focus();
   };
 
   return [htmlElRef, setFocus];
 };
 
-export default function Search(props: any) {
+export default function Search(props) {
   const [query, setQuery] = useState('');
   const [inputRef, setInputFocus] = useFocus();
   const [results, setResults] = useState([]);
@@ -21,9 +21,9 @@ export default function Search(props: any) {
     if (props.open) setInputFocus();
   }, [props.open]);
 
-  const searchEndpoint = (query: string) => `/api/search?q=${query}`;
+  const searchEndpoint = (query) => `/api/search?q=${query}`;
 
-  const onInputChange = (query: string) => {
+  const onInputChange = (query) => {
     setQuery(query);
     if (query.length) {
       fetch(searchEndpoint(query))
@@ -36,9 +36,9 @@ export default function Search(props: any) {
     }
   };
 
-  const onSelect = (item: any) => {
+  const onSelect = (item) => {
     router.push(`/posts/${item.id}`);
-    props.setOpen(false)
+    props.setOpen(false);
   };
 
   return (
@@ -63,9 +63,9 @@ export default function Search(props: any) {
             {isOpen &&
               results
                 .filter(
-                  (item: any) => !inputValue || item.title.includes(inputValue),
+                  (item) => !inputValue || item.title.includes(inputValue),
                 )
-                .map((item: any, index) => (
+                .map((item, index) => (
                   <li
                     className="result"
                     {...getItemProps({

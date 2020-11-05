@@ -11,7 +11,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 import '../styles/index.css';
 
-export default function App({ Component, pageProps }: any) {
+export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>

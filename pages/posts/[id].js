@@ -4,8 +4,7 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
 import Layout from '../../components/Layout';
 import Date from '../../components/Date';
 
-export default function Post({ postData }: any) {
-  console.log(postData);
+export default function Post({ postData }) {
   return (
     <Layout>
       <Head>
@@ -37,7 +36,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
   return {
     props: {
