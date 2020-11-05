@@ -127,7 +127,7 @@ time {
 
 .card {
   position: relative;
-  padding: 25px;
+  padding: 12px;
   height: 460px;
   flex: 0 0 40%;
   max-width: 40%;
@@ -200,7 +200,7 @@ time {
   top: 0;
   left: 0;
   overflow: hidden;
-  height: 420px;
+  height: 440px;
   width: 100vw;
   transform: translateZ(0);
 }
