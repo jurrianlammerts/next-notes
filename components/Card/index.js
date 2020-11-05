@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { memo, useRef } from 'react';
+import { memo, useRef, useState } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { useInvertedBorderRadius } from '../../utils/useInvertedBorderRadius';
 import { ContentPlaceholder } from './ContentPlaceholder';
@@ -18,8 +18,7 @@ const dismissDistance = 150;
 export const Card = memo(
   ({ id, slug, title, category, pointOfInterest, backgroundColor }) => {
     const router = useRouter();
-
-    const isSelected = router.pathname === id;
+    const [isSelected, setIsSelected] = useState(false);
 
     const y = useMotionValue(0);
     const zIndex = useMotionValue(isSelected ? 2 : 0);
@@ -54,8 +53,11 @@ export const Card = memo(
     );
 
     return (
-      <li ref={containerRef} className={`card`}>
-        <Overlay isSelected={isSelected} />
+      <motion.li
+        ref={containerRef}
+        className={`card`}
+      >
+        <Overlay isSelected={isSelected} setIsSelected={setIsSelected} />
         <Link href={`posts/${slug}`}>
           <div className={`card-content-container ${isSelected && 'open'}`}>
             <motion.div
@@ -83,13 +85,13 @@ export const Card = memo(
             </motion.div>
           </div>
         </Link>
-      </li>
+      </motion.li>
     );
   },
   (prev, next) => prev.isSelected === next.isSelected,
 );
 
-const Overlay = ({ isSelected }) => {
+const Overlay = ({ isSelected, setIsSelected }) => {
   const router = useRouter();
   return (
     <motion.div
@@ -98,7 +100,7 @@ const Overlay = ({ isSelected }) => {
       transition={{ duration: 0.2 }}
       style={{ pointerEvents: isSelected ? 'auto' : 'none' }}
       className="overlay"
-      onClick={() => router.push('/')}
+      onClick={() => setIsSelected(false)}
     />
   );
 };

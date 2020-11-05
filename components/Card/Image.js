@@ -18,6 +18,7 @@ export const Image = ({
       <motion.img
         className="card-image"
         src={`images/${id}.jpg`}
+        whileHover={{ scale: 1.1 }}
         alt=""
         initial={false}
         animate={

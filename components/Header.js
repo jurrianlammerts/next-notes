@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import * as React from 'react';
+import { forwardRef } from 'react';
 import { Avatar } from 'react-lorem-ipsum';
 import DateComp from './Date';
 
-export default function Header() {
+const Header = forwardRef((props, ref) => {
+  const { openSearch, setOpenSearch } = props;
   const isoDate = new Date().toISOString();
 
   return (
@@ -13,7 +14,15 @@ export default function Header() {
         <Link href="/">Today</Link>
       </h1>
 
-      <Avatar className="avatar" />
+      <button
+        ref={ref}
+        className="search-button"
+        onClick={() => setOpenSearch(true)}
+      >
+        <Avatar className="avatar" />
+      </button>
     </header>
   );
-}
+});
+
+export default Header;

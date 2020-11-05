@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Layout from '../../components/Layout';
 import Date from '../../components/Date';
@@ -12,6 +14,7 @@ export default function Post({ postData }) {
       </Head>
       <article>
         <Image
+          key={postData.id}
           src={`/images/${postData.id}.jpg`}
           alt="Picture of the author"
           height={500}

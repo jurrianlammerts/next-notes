@@ -11,15 +11,15 @@ const useFocus = () => {
   return [htmlElRef, setFocus];
 };
 
-export default function Search(props) {
+export default function Search({ open, setOpen }) {
   const [query, setQuery] = useState('');
   const [inputRef, setInputFocus] = useFocus();
   const [results, setResults] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
-    if (props.open) setInputFocus();
-  }, [props.open]);
+    open && setInputFocus();
+  }, [open]);
 
   const searchEndpoint = (query) => `/api/search?q=${query}`;
 
@@ -37,8 +37,8 @@ export default function Search(props) {
   };
 
   const onSelect = (item) => {
-    router.push(`/posts/${item.id}`);
-    props.setOpen(false);
+    router.push(`/posts/${item.slug}`);
+    setOpen(false);
   };
 
   return (
@@ -58,7 +58,12 @@ export default function Search(props) {
         isOpen,
       }) => (
         <div>
-          <input {...getInputProps()} id="spotlight" ref={inputRef} />
+          <input
+            {...getInputProps()}
+            id="spotlight"
+            className={isOpen ? 'spotlight--open' : ''}
+            ref={inputRef}
+          />
           <ul {...getMenuProps()} className="results">
             {isOpen &&
               results
