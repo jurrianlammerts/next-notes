@@ -61,7 +61,7 @@ export default function Search({ open, setOpen }) {
           <input
             {...getInputProps()}
             id="spotlight"
-            className={isOpen ? 'spotlight--open' : ''}
+            placeholder="Search your notes..."
             ref={inputRef}
           />
           <ul {...getMenuProps()} className="results">
@@ -87,6 +87,18 @@ export default function Search({ open, setOpen }) {
                     {item.title}
                   </li>
                 ))}
+            <div className="results-footer">
+              <p>
+                <span>↑↓</span>
+                Select
+              </p>
+              <p>
+                <span>ENTER</span> Open
+              </p>
+              <p>
+                <span>⌘ + ENTER</span> Open in a new tab
+              </p>
+            </div>
           </ul>
         </div>
       )}

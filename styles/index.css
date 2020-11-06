@@ -263,12 +263,9 @@ time {
 #spotlight {
   height: 56px;
   width: 100%;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   outline: none;
   font-size: 1.6rem;
   color: #000;
@@ -278,11 +275,6 @@ time {
   background-repeat: no-repeat;
   background-size: 24px;
   padding: 0 52px;
-}
-
-.spotlight--open {
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
 }
 
 .results {
@@ -300,6 +292,30 @@ time {
   padding: 18px;
   color: #1c1c1e;
   cursor: pointer;
+}
+
+.results-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: default;
+}
+
+.results-footer span {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.results-footer p {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  margin: 0;
+  padding: 0 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .content-container {
