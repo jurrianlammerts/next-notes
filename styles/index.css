@@ -294,6 +294,14 @@ time {
   cursor: pointer;
 }
 
+.results-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 6px 12px 6px 0;
+  font-size: 14px;
+}
+
 .results-footer {
   display: flex;
   flex-direction: row;
@@ -319,7 +327,6 @@ time {
 }
 
 .results-recent {
-  padding-top: 6px;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.5);
 }
@@ -327,6 +334,15 @@ time {
 .results-recent span {
   padding: 4px 8px;
   font-size: 12px;
+}
+
+.results-clear-btn {
+  border-radius: 4px;
+  padding: 0 6px;
+}
+.results-clear-btn:hover,
+:focus {
+  background-color: lightgray;
 }
 
 .content-container {

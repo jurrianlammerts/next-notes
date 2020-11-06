@@ -14,6 +14,7 @@ const useFocus = () => {
 export default function Search({ open, setOpen }) {
   const [query, setQuery] = useState('');
   const [recent, setRecent] = useState([]);
+  const [showButton, setShowButton] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
   const [results, setResults] = useState([]);
   const router = useRouter();
@@ -40,6 +41,12 @@ export default function Search({ open, setOpen }) {
     } else {
       setResults([]);
     }
+  };
+
+  const clearRecentSearch = () => {
+    setRecent([]);
+    localStorage.clear();
+    setOpen(true);
   };
 
   const saveRecentSearch = (item) => {
@@ -123,7 +130,20 @@ export default function Search({ open, setOpen }) {
                 ))}
             {recent.length > 0 && !query && (
               <div className="results-recent">
-                <span>RECENT PAGES</span>
+                <div
+                  className="results-header"
+                  onMouseOver={() => setShowButton(true)}
+                >
+                  <span>RECENT PAGES</span>
+                  {showButton && (
+                    <button
+                      className="results-clear-btn"
+                      onClick={() => clearRecentSearch()}
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
                 {recent.map((item, index) => (
                   <li
                     className="result"
