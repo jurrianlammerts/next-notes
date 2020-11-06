@@ -340,8 +340,12 @@ time {
   border-radius: 4px;
   padding: 0 6px;
 }
-.results-clear-btn:hover,
-:focus {
+
+.results-clear-btn:focus {
+  background-color: lightgray;
+}
+
+.results-clear-btn:hover {
   background-color: lightgray;
 }
 

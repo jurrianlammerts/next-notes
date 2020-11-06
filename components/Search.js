@@ -166,6 +166,7 @@ export default function Search({ open, setOpen }) {
             <div className="results-footer">
               <p>
                 <span>↑↓</span>
+                {'  '}
                 Select
               </p>
               <p>
