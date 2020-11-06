@@ -1,25 +1,18 @@
-const { Client } = require('@elastic/elasticsearch');
-const client = new Client({ node: 'http://localhost:3000/posts/search?' });
+import { search } from 'ss-search';
 
 import { getSortedPostsData } from '../../../lib/posts';
 
-const posts =
+const data =
   process.env.NODE_ENV === 'production'
     ? require('../../../cache/data').posts
     : getSortedPostsData();
 
-export default async (req, res) => {
-  try {
-    const response = await client.search({
-      q: 'pants',
-    });
-    console.log(response.hits.hits);
-    console.log(response);
+const searchKeys = ['title', 'category'];
 
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ response }));
-  } catch (error) {
-    console.trace(error.message);
-  }
+export default async (req, res) => {
+  const results = search(data, searchKeys, req.query.q);
+
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({ results }));
 };
