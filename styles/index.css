@@ -318,6 +318,17 @@ time {
   white-space: nowrap;
 }
 
+.results-recent {
+  padding-top: 6px;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.results-recent span {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
 .content-container {
   padding: 460px 35px 35px 35px;
   max-width: 700px;

@@ -13,6 +13,7 @@ const useFocus = () => {
 
 export default function Search({ open, setOpen }) {
   const [query, setQuery] = useState('');
+  const [recent, setRecent] = useState([]);
   const [inputRef, setInputFocus] = useFocus();
   const [results, setResults] = useState([]);
   const router = useRouter();
@@ -20,6 +21,11 @@ export default function Search({ open, setOpen }) {
   useEffect(() => {
     open && setInputFocus();
   }, [open]);
+
+  useEffect(() => {
+    const recentSearch = getRecentSearch();
+    if (recentSearch) setRecent(recentSearch);
+  }, []);
 
   const searchEndpoint = (query) => `/api/search?q=${query}`;
 
@@ -36,8 +42,36 @@ export default function Search({ open, setOpen }) {
     }
   };
 
+  const saveRecentSearch = (item) => {
+    const current = localStorage.getItem('recent-pages');
+
+    if (!current) localStorage.setItem('recent-pages', JSON.stringify([item]));
+
+    if (current) {
+      const array = JSON.parse(current);
+
+      // Only push unique values to array
+      const index = array.findIndex((x) => x.id == item.id);
+      if (index === -1) {
+        array.push(item);
+
+        // Store max 3 pages in localstorage
+        const newArray = array.slice(Math.max(array.length - 3, 0));
+        localStorage.setItem('recent-pages', JSON.stringify(newArray));
+      }
+    }
+  };
+
+  const getRecentSearch = () => {
+    const recentSearch = localStorage.getItem('recent-pages');
+    const array = JSON.parse(recentSearch);
+    return array;
+  };
+
   const onSelect = (item) => {
     router.push(`/posts/${item.id}`);
+
+    saveRecentSearch(item);
     setOpen(false);
   };
 
@@ -87,6 +121,28 @@ export default function Search({ open, setOpen }) {
                     {item.title}
                   </li>
                 ))}
+            {recent.length > 0 && !query && (
+              <div className="results-recent">
+                <span>RECENT PAGES</span>
+                {recent.map((item, index) => (
+                  <li
+                    className="result"
+                    {...getItemProps({
+                      key: `${item.title}${index}`,
+                      item,
+                      index,
+                      style: {
+                        backgroundColor:
+                          highlightedIndex === index ? 'lightgray' : 'white',
+                        fontWeight: selectedItem === item ? 'bold' : 'normal',
+                      },
+                    })}
+                  >
+                    {item.title}
+                  </li>
+                ))}
+              </div>
+            )}
             <div className="results-footer">
               <p>
                 <span>↑↓</span>
